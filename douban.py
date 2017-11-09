@@ -104,13 +104,13 @@ def replies(session):
     :return:
     '''
     url = bash_url+'add_comment'
-    count = 1
     while True:
         ##在控制台查看顶贴的次数
-        print('我再顶' + str(count))
         ##提交的数据
+        ding_text = requests.get('http://whatthecommit.com/index.txt').text
+        print(ding_text)
         data = {
-            "rv_comment": 'ding' + str(count),
+            "rv_comment": ding_text,
             "ck": "aubV",
             'start': '0',
             'submit_btn': '加上去'
@@ -142,8 +142,10 @@ def replies(session):
                     else:
                         veri_code_input = input('输入验证码:')
                         # 构造验证码提交的数据
+                        ding_text = requests.get('http://whatthecommit.com/index.txt').text
+                        print(ding_text)
                         data_captcha = {
-                            "rv_comment": '有验证码我也顶' + str(count),
+                            "rv_comment": ding_text,
                             "ck": data['ck'],
                             'start': '0',
                             'submit_btn': '加上去',
@@ -157,7 +159,6 @@ def replies(session):
             else:
                 session.post(url=url, data=data, headers=headers)
                 break
-        count += 1
         print('等待20秒')
         time.sleep(20)
 

@@ -3,7 +3,9 @@ python 自动登陆豆瓣，和顶贴
 
 > 配置 帖子的连接
 
+```python
 bash_url = ''
+```
 
 > 配置豆瓣 账号和密码
 ```python
